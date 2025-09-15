@@ -1,1 +1,17 @@
-{"name":"Radar Global de Tendencias 1","date":"8.9.25"}
+{
+  "generated_at": "2025-09-15T08:31:11.443099",
+  "timezone": "Europe/Madrid",
+  "range_start": "2025-09-08",
+  "range_end": "2025-09-14",
+  "rules": {
+    "exclude_food": true,
+    "no_specific_articles": true,
+    "image_fallback": "svg",
+    "ui": {
+      "chips": true,
+      "grid_list_toggle": true,
+      "no_search": true
+    }
+  },
+  "notes": "Entrega de prueba para validar estructura y build."
+}
