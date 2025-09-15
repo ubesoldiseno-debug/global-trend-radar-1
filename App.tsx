@@ -2,12 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Download, Link as LinkIcon, LayoutGrid, List as ListIcon, Calendar, Sparkles } from 'lucide-react'
 import { classNames, getImageSrc } from './utils'
 
-/**
- * Minisite: Radar Global de Tendencias
- * Versión estable y optimizada (estructura PLANA, sin /src).
- * Mantiene el mismo diseño exigido: 4 Destacados, 10 Novedades, 3 Watchlist.
- */
-
 const seedTopActions = [
   { text: 'Sappi lanza papeles monomaterial con alta barrera reciclables (Guard Pro OHS/OMH)', url: 'https://packagingeurope.com/news/sappi-introduces-recyclable-high-barrier-mono-material-papers/13313.article' },
   { text: 'Bertolli introduce botella 100% rPET para aceite de oliva', url: 'https://packagingeurope.com/news/bertolli-unveils-100-rpet-bottle/13312.article' },
@@ -22,14 +16,13 @@ const seedWatchlist = [
 ]
 
 const seedData = [
-  { id: 'sappi-guard-pro', title: 'Sappi presenta papeles monomaterial con alta barrera reciclables', url: 'https://packagingeurope.com/news/sappi-introduces-recyclable-high-barrier-mono-material-papers/13313.article', why: 'Guard Pro OHS/OMH permite sustituir laminados plásticos/aluminio con papel reciclable...', tag: 'PACKAGING', sector: 'Materiales & barreras', image: null, date: '2025-09-02' },
-  { id: 'bertolli-rpet', title: 'Bertolli lanza botella 100% rPET para aceite de oliva', url: 'https://packagingeurope.com/news/bertolli-unveils-100-rpet-bottle/13312.article', why: 'Caso de uso masivo de rPET en AOVE...', tag: 'PACKAGING', sector: 'Rigid packaging / Bebidas', image: null, date: '2025-09-02' },
-  { id: 'metsa-ccs', title: 'Metsä Group activa piloto de captura de CO₂ en fábrica de pulpa', url: 'https://packagingeurope.com/news/industry-first-carbon-capture-pilot-plant-launches-at-mets%C3%A4-group-mill/13322.article', why: 'Primer piloto del sector para capturar CO₂...', tag: 'TRANSVERSAL', sector: 'Descarbonización', image: null, date: '2025-09-05' },
-  { id: 'nviro1-pet-closure', title: 'Tapón PET de Nviro1 aspira a reciclado monomaterial', url: 'https://packagingeurope.com/news/patented-pet-closure-from-nviro1-aspires-for-mono-material-pack-recycling/13323.article', why: 'Cierre PET pensado para reciclarse...', tag: 'PACKAGING', sector: 'Taponería & reciclado', image: null, date: '2025-09-05' },
-  { id: 'tipa-label', title: 'TIPA/Bio4Pack: etiqueta ‘home compostable’ para frutas y verduras', url: 'https://packagingeurope.com/news/tipa-and-bio4pack-announce-certified-home-compostable-label-for-fresh-produce/13324.article', why: 'Nueva etiqueta certificada compostable...', tag: 'PACKAGING', sector: 'Etiquetado sostenible', image: null, date: '2025-09-06' },
-  { id: 'samsara-plant', title: 'Samsara Eco abre su primera planta de reciclaje enzimático a escala', url: 'https://packagingeurope.com/news/samsara-eco-opens-first-plant-to-scale-low-carbon-circular-materials/13321.article', why: 'Aumenta capacidad para materiales circulares...', tag: 'TRANSVERSAL', sector: 'Reciclaje químico/enzimático', image: null, date: '2025-09-05' },
-  { id: 'readers-award', title: 'Premio de los lectores 2025 de Packaging Europe abre nominaciones', url: 'https://packagingeurope.com/packaging-europes-readers-award-2025-is-open-for-submissions/13305.article', why: 'Escaparate de innovaciones...', tag: 'TRANSVERSAL', sector: 'Eventos & premios', image: null, date: '2025-09-03' },
-  { id: 'soy-sauce-fish-ban', title: 'Australia del Sur prohíbe los ‘pez-soja’: avance contra componentes plásticos', url: 'https://packagingeurope.com/topics/recyclability', why: 'Medida regulatoria...', tag: 'TRANSVERSAL', sector: 'Regulación', image: null, date: '2025-09-02' },
+  { id: 'sappi-guard-pro', title: 'Sappi presenta papeles monomaterial con alta barrera reciclables', url: 'https://packagingeurope.com/news/sappi-introduces-recyclable-high-barrier-mono-material-papers/13313.article', why: 'Guard Pro OHS/OMH permite sustituir laminados...', tag: 'PACKAGING', sector: 'Materiales & barreras', image: null, date: '2025-09-02' },
+  { id: 'bertolli-rpet', title: 'Bertolli lanza botella 100% rPET para aceite de oliva', url: 'https://packagingeurope.com/news/bertolli-unveils-100-rpet-bottle/13312.article', why: 'Caso de uso masivo de rPET...', tag: 'PACKAGING', sector: 'Rigid packaging / Bebidas', image: null, date: '2025-09-02' },
+  { id: 'metsa-ccs', title: 'Metsä Group activa piloto de captura de CO₂ en fábrica de pulpa', url: 'https://packagingeurope.com/news/industry-first-carbon-capture-pilot-plant-launches-at-mets%C3%A4-group-mill/13322.article', why: 'Primer piloto del sector...', tag: 'TRANSVERSAL', sector: 'Descarbonización', image: null, date: '2025-09-05' },
+  { id: 'nviro1-pet-closure', title: 'Tapón PET de Nviro1 aspira a reciclado monomaterial', url: 'https://packagingeurope.com/news/patented-pet-closure-from-nviro1-aspires-for-mono-material-pack-recycling/13323.article', why: 'Cierre PET pensado...', tag: 'PACKAGING', sector: 'Taponería & reciclado', image: null, date: '2025-09-05' },
+  { id: 'tipa-label', title: 'TIPA/Bio4Pack: etiqueta ‘home compostable’ para frutas y verduras', url: 'https://packagingeurope.com/news/tipa-and-bio4pack-announce-certified-home-compostable-label-for-fresh-produce/13324.article', why: 'Nueva etiqueta certificada...', tag: 'PACKAGING', sector: 'Etiquetado sostenible', image: null, date: '2025-09-06' },
+  { id: 'samsara-plant', title: 'Samsara Eco abre su primera planta de reciclaje enzimático a escala', url: 'https://packagingeurope.com/news/samsara-eco-opens-first-plant-to-scale-low-carbon-circular-materials/13321.article', why: 'Aumenta capacidad...', tag: 'TRANSVERSAL', sector: 'Reciclaje químico/enzimático', image: null, date: '2025-09-05' },
+  { id: 'readers-award', title: 'Premio de los lectores 2025 de Packaging Europe abre nominaciones', url: 'https://packagingeurope.com/packaging-europes-readers-award-2025-is-open-for-submissions/13305.article', why: 'Escaparate...', tag: 'TRANSVERSAL', sector: 'Eventos & premios', image: null, date: '2025-09-03' },
   { id: 'domino-n410', title: 'Domino lanzará prensa LED inkjet N410 en Labelexpo Barcelona', url: 'https://packagingeurope.com/article/1013.type', why: 'Nueva plataforma...', tag: 'PACKAGING', sector: 'Impresión & converting', image: null, date: '2025-09-05' },
   { id: 'upm-royalvassen', title: 'UPM y Royal Vassen presentan papeles barrera de fibra reciclables', url: 'https://packagingeurope.com/news/upm-and-royal-vassen-develop-recyclable-fibre-based-barrier-papers/13320.article', why: 'Alta barrera...', tag: 'PACKAGING', sector: 'Materiales barrera', image: null, date: '2025-09-04' }
 ]
@@ -61,7 +54,6 @@ export default function MinisiteRadar(){
   const [layout, setLayout] = useLocalStorage('radar.layout', 'grid')
   const [sortDesc, setSortDesc] = useLocalStorage('radar.sortDesc', true)
 
-  // seguridad: datos visibles aunque el localStorage esté vacío
   useEffect(()=>{ if(!Array.isArray(items) || items.length===0) setItems(seedData) }, [items, setItems])
   useEffect(()=>{ if(!activeTags || (Array.isArray(activeTags) && activeTags.length===0)) setActiveTags(TAGS.slice()) }, [activeTags, setActiveTags])
 
