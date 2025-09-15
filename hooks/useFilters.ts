@@ -1,20 +1,14 @@
 import { useMemo, useState } from 'react'
-import type { TrendItem } from '../types'
+import type { Item } from '../types'
 
-export function useFilters(items: TrendItem[]) {
+export function useFilters(blocks: { destacados: Item[]; novedades: Item[]; watchlist: Item[] }){
   const [view, setView] = useState<'grid'|'list'>('grid')
-  const [activeTags, setActiveTags] = useState<string[]>([])
+  const [filter, setFilter] = useState<string>('')
 
-  const allTags = useMemo(() => {
-    const set = new Set<string>()
-    items.forEach(i => i.tags.forEach(t => set.add(t)))
-    return Array.from(set).sort()
-  }, [items])
+  const all = useMemo(()=>[...blocks.destacados, ...blocks.novedades, ...blocks.watchlist], [blocks])
+  const tags = useMemo(()=>Array.from(new Set(all.map(i=>i.tag))), [all])
 
-  const filtered = useMemo(() => {
-    if (activeTags.length === 0) return items
-    return items.filter(i => activeTags.every(t => i.tags.includes(t)))
-  }, [items, activeTags])
+  const filterItems = (arr: Item[]) => filter ? arr.filter(i=>i.tag===filter) : arr
 
-  return { view, setView, activeTags, setActiveTags, allTags, filtered }
+  return { view, setView, filter, setFilter, tags, filterItems }
 }

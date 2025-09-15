@@ -1,17 +1,26 @@
 {
-  "generated_at": "2025-09-15T08:31:11.443099",
+  "generated_at": "2025-09-15T08:46:54.447593",
   "timezone": "Europe/Madrid",
   "range_start": "2025-09-08",
   "range_end": "2025-09-14",
   "rules": {
     "exclude_food": true,
-    "no_specific_articles": true,
-    "image_fallback": "svg",
     "ui": {
       "chips": true,
       "grid_list_toggle": true,
       "no_search": true
+    },
+    "counts": {
+      "destacados": 4,
+      "novedades": 10,
+      "watchlist": 3
     }
   },
-  "notes": "Entrega de prueba para validar estructura y build."
+  "sources": [
+    "The Verge",
+    "Ars Technica",
+    "Retail Dive",
+    "TechCrunch",
+    "Cosmetics Business"
+  ]
 }

@@ -1,10 +1,11 @@
-export type TrendItem = {
+export type Item = {
   id: string
   title: string
   summary: string
-  tags: string[]
+  why: string
+  tag: 'PACKAGING' | 'GRÁFICO' | 'BEAUTY' | 'TRANSVERSAL'
+  sector: string
+  date: string
   url: string
-  source: string
-  dateISO: string
-  image?: string
+  image: string | null
 }
