@@ -1,10 +1,5 @@
 {
-  "site_title": "Radar Global de Tendencias 1",
-  "date_label": "(8.9.25)",
-  "week_range": "Semana del 4–11 septiembre 2025 · Madrid (CET)",
-  "sections": [
-    "Destacados",
-    "Novedades",
-    "Watchlist"
-  ]
+  "name": "Radar Global de Tendencias 1",
+  "date": "8.9.25",
+  "author": "Grupo Ubesol"
 }

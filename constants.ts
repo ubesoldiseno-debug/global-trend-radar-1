@@ -1,4 +1,7 @@
-export const SITE_TITLE = 'Radar Global de Tendencias 1';
-export const SITE_SUBTITLE = '(8.9.25)';
-export const WEEK_RANGE = 'Semana del 4–11 septiembre 2025 · Madrid (CET)';
-export const DATA_URL = '/data/news.json';
+export const TAGS = ["PACKAGING","GRÁFICO","BEAUTY","TRANSVERSAL"] as const;
+export const TAG_LABELS: Record<string,string> = {
+  PACKAGING: 'Packaging',
+  'GRÁFICO': 'Gráfico',
+  BEAUTY: 'Beauty',
+  TRANSVERSAL: 'Transversal',
+};
