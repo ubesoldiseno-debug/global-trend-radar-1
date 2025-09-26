@@ -1,30 +1,44 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import type { Item } from '../types'
-import { format } from '../utils'
+import { classNames, getMshot, svgFallback } from '../utils'
 
-export default function TrendCard({ item }: { item: Item }){
+export default function TrendCard({ it }: { it: Item }) {
+  const [srcIdx, setSrcIdx] = useState(0)
+  const sources = useMemo(() => {
+    const arr = []
+    if (it.image && /^https?:\/\//.test(it.image)) arr.push(it.image)
+    const m = getMshot(it.url)
+    if (m) arr.push(m)
+    arr.push(svgFallback(it.title))
+    return arr
+  }, [it.image, it.url, it.title])
+
   return (
-    <a href={item.url} target="_blank" rel="noreferrer" className="block rounded-2xl p-5 bg-white shadow hover:shadow-lg transition">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-lg font-semibold leading-snug">{item.title}</h3>
-          <p className="mt-2 text-sm text-gray-700">{item.summary}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <span className="px-2 py-1 text-xs rounded-full bg-gray-100">{item.tag}</span>
-            <span className="px-2 py-1 text-xs rounded-full bg-gray-100">{item.sector}</span>
-          </div>
-        </div>
-        {item.image ? (
-          <img src={item.image} alt="" className="w-24 h-24 object-cover rounded-xl hidden sm:block"/>
-        ) : (
-          <svg viewBox="0 0 48 48" className="w-24 h-24 hidden sm:block">
-            <rect x="2" y="2" width="44" height="44" rx="10" fill="#f3f4f6"/>
-            <path d="M12 32l6-8 6 6 6-10 6 12" stroke="#9ca3af" strokeWidth="2" fill="none"/>
-          </svg>
-        )}
+    <div className="group rounded-3xl overflow-hidden bg-white border border-neutral-200 shadow-sm hover:shadow-md">
+      <div className="aspect-[16/9] bg-neutral-100 relative">
+        <img
+          src={sources[srcIdx]}
+          onError={() => setSrcIdx(i => Math.min(i+1, sources.length-1))}
+          alt={it.title}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
-      <p className="mt-4 text-xs text-gray-500">{format(item.date)}</p>
-      <p className="mt-3 text-sm text-gray-600">{item.why}</p>
-    </a>
+      <div className="p-4">
+        <div className="flex items-center justify-between gap-2">
+          <span className={classNames('text-[11px] tracking-wide px-2 py-0.5 rounded-full border',
+            it.tag==='PACKAGING' ? 'bg-neutral-900 text-white border-neutral-900'
+              : it.tag==='GRÁFICO' ? 'bg-neutral-800 text-white border-neutral-800'
+              : it.tag==='BEAUTY' ? 'bg-neutral-700 text-white border-neutral-700'
+              : 'bg-neutral-600 text-white border-neutral-600'
+          )}>{it.tag}</span>
+          <span className="text-xs text-neutral-500">{it.date || '—'}</span>
+        </div>
+        <a href={it.url} target="_blank" rel="noreferrer" className="mt-2 block text-lg font-bold leading-snug hover:underline">
+          {it.title}
+        </a>
+        {it.why && <p className="mt-1 text-sm text-neutral-700 font-light">{it.why}</p>}
+      </div>
+    </div>
   )
 }
