@@ -1,1 +1,17 @@
-{"name": "Radar Global de Tendencias 1", "date": "(22.9.25)"}
+{
+  "period": "29 sep – 3 oct 2025",
+  "subtitle": "Packaging: materiales, diseño y regulación (ES)",
+  "sections": [
+    {
+      "title": "Destacados"
+    },
+    {
+      "title": "Novedades"
+    },
+    {
+      "title": "Watchlist"
+    }
+  ],
+  "generatedAt": "2025-09-29T11:48:41.526811Z",
+  "locale": "es-ES"
+}
