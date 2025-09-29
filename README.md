@@ -1,2 +1,8 @@
-# Global Trend Radar — Vercel Fixed (22 Sep 2025)
-Estructura **plana** (sin `/src`) lista para Vercel + Vite. Sin buscador. 4 Destacados, 10 Novedades, 3 Watchlist.
+# Minisite de Noticias — Vite + React + TS (Tailwind por CDN)
+
+Proyecto generado automáticamente a partir de tus noticias. Estructura fija de 14 archivos.
+
+## Ejecutar localmente
+```bash
+npm i
+npm run dev
