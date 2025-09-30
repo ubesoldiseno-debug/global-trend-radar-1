@@ -21,7 +21,8 @@ export const NEWS = [
     "dateISO": "2025-09-26",
     "source": "Stora Enso",
     "url": "https://www.storaenso.com/en/newsroom/press-releases/2025/9/stora-enso-introduces-ensovelvet-a-new-premium-uncoated-paperboard-for-luxury-packaging",
-    "section": "Destacados"
+    "section": "Destacados",
+    "image": "https://mb.cision.com/Public/10891/4239042/991aa3f7a1142c91_org.jpg"
   },
   {
     "pill": "Premios/Diseño",
@@ -52,7 +53,7 @@ export const NEWS = [
     "title": "DS Smith × BSH: reemplazo de EPS por cartón ondulado",
     "dateISO": "2025-09-24",
     "source": "DSSmith.com Corporate",
-    "url": "https://www.dssmith.com/fr/media/actualites/2025/9/ds-smith-et-bsh-nazarje-collaborent-pour-remplacer-le-pse-dans-les-blenders-menagers-par-une-alternative-durable-a-base-de-fibres",
+    "url": "https://www.dssmith.com/fr/media/actualites/2025/9/ds-smith-et-bsh-nazarje-collaborent-pour-remplacer-le-pse-dans-les-blenders-menagers-par-alternative-durable-a-base-de-fibres",
     "section": "Novedades"
   },
   {

@@ -6,31 +6,10 @@
     <title>Global Trend Radar · 29 sep – 3 oct 2025</title>
     <meta name="description" content="Minisite semanal de noticias" />
     <meta name="theme-color" content="#0b0f14" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'media',
-        theme: {
-          extend: {
-            colors: {
-              brand: { 50:'#eef6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb' }
-            },
-            boxShadow: {
-              xs: '0 1px 2px rgba(0,0,0,0.06)'
-            },
-            borderRadius: {
-              '3xl': '1.5rem'
-            }
-          }
-        }
-      }
-    </script>
-    <style>body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}</style>
+    <script>tailwind.config = { darkMode: 'media' }</script>
   </head>
-  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+  <body class="bg-white dark:bg-slate-950">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

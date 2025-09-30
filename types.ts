@@ -13,6 +13,7 @@ export type NewsItem = {
   source: string;
   url: string;
   section: string; // debe existir en metadata.sections
+  image?: string; // URL opcional para hero (solo primera noticia de Destacados)
 };
 export type Filters = {
   search: string;
