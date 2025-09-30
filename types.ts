@@ -12,8 +12,8 @@ export type NewsItem = {
   dateISO: string; // YYYY-MM-DD
   source: string;
   url: string;
+  image?: string; // URL absoluta de imagen (solo se usa en el hero)
   section: string; // debe existir en metadata.sections
-  image?: string; // URL opcional para hero (solo primera noticia de Destacados)
 };
 export type Filters = {
   search: string;
