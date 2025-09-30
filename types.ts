@@ -12,8 +12,6 @@ export type NewsItem = {
   dateISO: string; // YYYY-MM-DD
   source: string;
   url: string;
-  image?: string; // opcional: para hero del titular principal
-  imageAlt?: string;
   section: string; // debe existir en metadata.sections
 };
 export type Filters = {

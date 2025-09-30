@@ -21,8 +21,6 @@ export const NEWS = [
     "dateISO": "2025-09-26",
     "source": "Stora Enso",
     "url": "https://www.storaenso.com/en/newsroom/press-releases/2025/9/stora-enso-introduces-ensovelvet-a-new-premium-uncoated-paperboard-for-luxury-packaging",
-    "image": "https://mb.cision.com/Public/10891/4239042/991aa3f7a1142c91_org.jpg",
-    "imageAlt": "Ensovelvet, cartón SBS sin estucar para lujo (Stora Enso)",
     "section": "Destacados"
   },
   {
