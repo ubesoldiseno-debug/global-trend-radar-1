@@ -4,6 +4,7 @@ import { NEWS } from "./constants";
 import type { NewsItem } from "./types";
 import { useFilters } from "./hooks/useFilters";
 import { TrendCard } from "./components/TrendCard";
+import { formatDateEs } from "./utils";
 import { Toolbar } from "./components/Toolbar";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
   const pills = useMemo(() => Array.from(new Set(NEWS.map(n => n.pill))).sort(), []);
   const { filtered, filters, setSearch, setPill, setSection } = useFilters(NEWS);
 
+  // Agrupar por sección
   const grouped = useMemo(() => {
     const map = new Map<string, NewsItem[]>();
     for (const s of allSections) map.set(s, []);
@@ -25,36 +27,73 @@ export default function App() {
     return map;
   }, [filtered, allSections]);
 
+  // Seleccionar hero: primer item de Destacados con image, si no existe, el primero de Destacados
+  const destacados = grouped.get("Destacados") || [];
+  const hero = destacados.find(i => !!i.image) || destacados[0];
+  const restDestacados = destacados.filter(i => i !== hero);
+
   return (
-    <section className="max-w-[1100px] mx-auto px-5 md:px-6 pb-10">
-      <header className="sticky top-0 z-20 -mx-5 md:-mx-6 px-5 md:px-6 py-4 mb-5 bg-white/80 dark:bg-slate-900/70 backdrop-blur supports-[backdrop-filter]:backdrop-blur shadow-xs">
-        <h1 className="text-[28px] md:text-[40px] font-extrabold leading-tight tracking-tight">Radar Global de Tendencias</h1>
-        <p className="m-0 text-slate-600 dark:text-slate-400 text-sm md:text-base">
-          {`Radar Global de tendencias · ${metadata.period}`}
-        </p>
-        <p className="m-0 text-slate-500 dark:text-slate-400 text-sm">{metadata.subtitle}</p>
+    <section className="max-w-[980px] mx-auto p-5 text-slate-900">
+      <header className="mb-4 rounded-2xl px-4 py-3 bg-white/90 backdrop-blur border border-slate-200 shadow-sm">
+        <h1 className="text-[28px] font-bold leading-tight tracking-tight">Minisite semanal · {metadata.period}</h1>
+        <p className="m-0 text-slate-600">{metadata.subtitle}</p>
       </header>
 
-      <Toolbar
-        pills={pills}
-        sections={allSections}
-        filters={filters}
-        setSearch={setSearch}
-        setPill={setPill}
-        setSection={setSection}
-        total={filtered.length}
-      />
+      <div className="sticky top-0 z-10 mb-4">
+        <div className="rounded-2xl border border-slate-200 bg-white/85 backdrop-blur px-3 py-3">
+          <Toolbar
+            pills={pills}
+            sections={allSections}
+            filters={filters}
+            setSearch={setSearch}
+            setPill={setPill}
+            setSection={setSection}
+            total={filtered.length}
+          />
+        </div>
+      </div>
 
-      {allSections.map((sectionTitle, idx) => {
+      {/* Destacados con HERO */}
+      {!!hero && (
+        <section className="mb-7">
+          <h2 className="mt-2 mb-2 text-xl font-semibold">Destacados</h2>
+          <div className="grid gap-4" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
+            {/* HERO ocupa 100% de ancho */}
+            <article className="col-span-full rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+              {hero.image ? (
+                <img
+                  src={hero.image}
+                  alt={hero.title}
+                  className="w-full h-64 md:h-80 object-cover"
+                  loading="eager"
+                />
+              ) : null}
+              <div className="p-4">
+                <span className="inline-block text-[11px] px-2.5 py-1 rounded-full bg-black text-white tracking-wide uppercase mb-2">{hero.pill}</span>
+                <h3 className="text-[18px] leading-snug font-semibold mb-2">{hero.title}</h3>
+                <div className="text-[12px] text-slate-600 mb-3">
+                  {formatDateEs(hero.dateISO)} · {hero.source}
+                </div>
+                <a href={hero.url} target="_blank" rel="noopener" className="text-[13px] text-black hover:underline">Leer más →</a>
+              </div>
+            </article>
+
+            {/* Los otros tres titulares, sin imagen */}
+            {restDestacados.slice(0,3).map((item, i) => (
+              <TrendCard key={`${item.url}-${i}`} item={item} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Resto de secciones, excepto Destacados ya renderizado arriba */}
+      {allSections.filter(s => s !== "Destacados").map((sectionTitle, idx) => {
         const items = grouped.get(sectionTitle) || [];
         if (!items.length) return null;
         return (
-          <div key={sectionTitle} className={idx === 0 ? "" : "mt-10"}>
-            <div className="flex items-end justify-between mb-3">
-              <h2 className="text-2xl font-semibold">{sectionTitle}</h2>
-              <span className="text-sm text-slate-500">{items.length} ítems</span>
-            </div>
-            <div className="grid gap-5" style={{gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))"}}>
+          <div key={sectionTitle} className="mt-7">
+            <h2 className="mt-2 mb-2 text-xl font-semibold">{sectionTitle}</h2>
+            <div className="grid gap-[14px]" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
               {items.map((item, i) => (
                 <TrendCard key={`${item.url}-${i}`} item={item} />
               ))}
