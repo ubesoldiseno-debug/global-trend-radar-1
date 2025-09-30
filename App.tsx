@@ -56,7 +56,8 @@ export default function App() {
       {/* Destacados con HERO */}
       {!!hero && (
         <section className="mb-7">
-          <h2 className="mt-2 mb-2 text-xl font-semibold">Destacados</h2>
+          {/* ⬇️ Cambio: títulos de sección en blanco */}
+          <h2 className="mt-2 mb-2 text-xl font-semibold text-white">Destacados</h2>
           <div className="grid gap-4" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
             {/* HERO ocupa 100% de ancho */}
             <article className="col-span-full rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
@@ -92,7 +93,8 @@ export default function App() {
         if (!items.length) return null;
         return (
           <div key={sectionTitle} className="mt-7">
-            <h2 className="mt-2 mb-2 text-xl font-semibold">{sectionTitle}</h2>
+            {/* ⬇️ Cambio: títulos de sección en blanco */}
+            <h2 className="mt-2 mb-2 text-xl font-semibold text-white">{sectionTitle}</h2>
             <div className="grid gap-[14px]" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
               {items.map((item, i) => (
                 <TrendCard key={`${item.url}-${i}`} item={item} />
