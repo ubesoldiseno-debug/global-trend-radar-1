@@ -1,52 +1,60 @@
-import React from 'react'
-import { LayoutGrid, List as ListIcon } from 'lucide-react'
-import { TAGS, TAG_LABELS } from '../constants'
-import type { Tag } from '../types'
-import { classNames } from '../utils'
+import React from "react";
+import type { Filters } from "../types";
 
-export default function Toolbar(props: {
-  activeTags: Tag[]
-  onToggle: (t: Tag) => void
-  onReset: () => void
-  layout: 'grid' | 'list'
-  setLayout: (v: 'grid' | 'list') => void
-  sortDesc: boolean
-  setSortDesc: (v: boolean) => void
-}) {
-  const { activeTags, onToggle, onReset, layout, setLayout, sortDesc, setSortDesc } = props
+type Props = {
+  pills: string[];
+  sections: string[];
+  filters: Filters;
+  setSearch: (v: string) => void;
+  setPill: (v: string | null) => void;
+  setSection: (v: string | null) => void;
+  total: number;
+};
+
+export function Toolbar({
+  pills, sections, filters, setSearch, setPill, setSection, total
+}: Props) {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-      <div className="lg:col-span-8 flex items-center gap-2 flex-wrap">
-        <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap -mx-2 px-2 sm:mx-0 sm:px-0 snap-x">
-          {TAGS.map((t) => (
-            <button key={t} onClick={() => onToggle(t)}
-              aria-pressed={activeTags.includes(t)}
-              className={classNames('px-3 py-1.5 rounded-2xl text-sm border shadow-sm min-w-fit snap-start',
-                activeTags.includes(t) ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white text-neutral-900 border-neutral-200')}>
-              {TAG_LABELS[t] || t}
+    <div className="sticky top-[86px] z-10 mb-6">
+      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow p-3 md:p-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 w-full">
+          <input
+            value={filters.search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Buscar título o fuente…"
+            className="w-full md:w-[460px] h-11 px-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:ring-2 focus:ring-brand-500"
+          />
+          <select
+            value={filters.section ?? ""}
+            onChange={e => setSection(e.target.value || null)}
+            className="h-11 px-3 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm"
+          >
+            <option value="">Todas las secciones</option>
+            {sections.map(s => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+          <select
+            value={filters.pill ?? ""}
+            onChange={e => setPill(e.target.value || null)}
+            className="h-11 px-3 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm"
+          >
+            <option value="">Todas las pills</option>
+            {pills.map(p => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+          {(filters.search || filters.section || filters.pill) && (
+            <button
+              onClick={() => { setSearch(""); setSection(null); setPill(null); }}
+              className="h-11 px-4 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm"
+            >
+              Limpiar
             </button>
-          ))}
+          )}
         </div>
-        <button onClick={onReset} className="rounded-2xl px-3 py-1.5 text-sm bg-white border border-neutral-200 shadow">Reset</button>
-      </div>
-      <div className="lg:col-span-4 flex items-center justify-end gap-2">
-        <div className="flex items-center gap-1 ml-2">
-          <button onClick={() => setLayout('grid')}
-            className={classNames('p-2 rounded-xl border', layout==='grid' ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white border-neutral-200')}>
-            <LayoutGrid size={16} />
-          </button>
-          <button onClick={() => setLayout('list')}
-            className={classNames('p-2 rounded-xl border', layout==='list' ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white border-neutral-200')}>
-            <ListIcon size={16} />
-          </button>
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="text-sm text-neutral-600 hidden sm:inline">Fecha</span>
-          <button onClick={() => setSortDesc(!sortDesc)} className="rounded-xl px-2 py-1 text-sm bg-white border border-neutral-200 shadow">
-            {sortDesc ? '↓' : '↑'}
-          </button>
-        </div>
+        <div className="text-sm text-slate-600 dark:text-slate-300 shrink-0">{total} resultados</div>
       </div>
     </div>
-  )
+  );
 }
