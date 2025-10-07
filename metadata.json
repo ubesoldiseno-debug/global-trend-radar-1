@@ -1,17 +1,12 @@
 {
-  "period": "29 sep – 3 oct 2025",
-  "subtitle": "Packaging: materiales, diseño y regulación (ES)",
+  "period": "10 – 14 feb 2026",
+  "subtitle": "Transición ecológica, regulación climática e inversión sostenible (ES)",
   "sections": [
-    {
-      "title": "Destacados"
-    },
-    {
-      "title": "Novedades"
-    },
-    {
-      "title": "Watchlist"
-    }
+    { "title": "Destacados" },
+    { "title": "Innovación" },
+    { "title": "Regulación" },
+    { "title": "Inversión" }
   ],
-  "generatedAt": "2025-09-30T10:13:18.429288Z",
+  "generatedAt": "2026-02-14T08:21:00.000Z",
   "locale": "es-ES"
 }
