@@ -1,139 +1,139 @@
 export const NEWS = [
   {
-    "pill": "Evento/Transversal",
-    "title": "FACHPACK 2025 — cobertura en directo",
-    "dateISO": "2025-09-29",
-    "source": "Packaging Europe",
-    "url": "https://packagingeurope.com/news/live-updates-from-fachpack-2025/13285.article",
-    "section": "Destacados"
-  },
-  {
-    "pill": "Materiales/Repositorio",
-    "title": "PlasticFree abre su base global de materiales",
-    "dateISO": "2025-09-27",
-    "source": "Global Cosmetics News",
-    "url": "https://www.globalcosmeticsnews.com/plasticfree-opens-global-materials-database-to-accelerate-plastic-alternatives/",
-    "section": "Destacados"
-  },
-  {
-    "pill": "Materiales/Beauty",
-    "title": "Stora Enso lanza Ensovelvet para lujo/beauty",
-    "dateISO": "2025-09-26",
-    "source": "Stora Enso",
-    "url": "https://www.storaenso.com/en/newsroom/press-releases/2025/9/stora-enso-introduces-ensovelvet-a-new-premium-uncoated-paperboard-for-luxury-packaging",
+    "pill": "Clima/Informe",
+    "title": "IEA actualiza su hoja de ruta Net Zero 2026",
+    "dateISO": "2026-02-14",
+    "source": "International Energy Agency",
+    "url": "https://www.iea.org/reports/net-zero-roadmap-2026-update",
     "section": "Destacados",
-    "image": "https://mb.cision.com/Public/10891/4239042/991aa3f7a1142c91_org.jpg"
+    "image": "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1400&q=80"
   },
   {
-    "pill": "Premios/Diseño",
-    "title": "European Carton Excellence Award 2025: ganadores",
-    "dateISO": "2025-09-25",
-    "source": "Pro Carton",
-    "url": "https://www.procarton.com/awards/european-carton-excellence-award/2025-2/",
+    "pill": "Ciudad/Resiliencia",
+    "title": "Barcelona presenta plan climático 2030 con fondos UE",
+    "dateISO": "2026-02-13",
+    "source": "Ajuntament de Barcelona",
+    "url": "https://www.barcelona.cat/ca/noticia/pla-clima-2030-financament-ue",
     "section": "Destacados"
   },
   {
-    "pill": "Materiales/Procesos",
-    "title": "NOVA Chemicals: PE con PPA no fluorados",
-    "dateISO": "2025-09-25",
-    "source": "novachem.com",
-    "url": "https://www.novachem.com/media-center/news-releases/nova-chemicals-introduces-polyethylene-grades-incorporating-next-generation-non-fluorinated-polymer-processing-aid/",
-    "section": "Novedades"
+    "pill": "Energía/Almacenamiento",
+    "title": "Repsol inaugura hub de baterías de segunda vida en Bilbao",
+    "dateISO": "2026-02-12",
+    "source": "Repsol Press",
+    "url": "https://www.repsol.com/es/prensa/2026/repsol-hub-baterias-bilbao.cshtml",
+    "section": "Destacados"
   },
   {
-    "pill": "Materiales/Procesos",
-    "title": "Dow: alternativa a PPAs fluoropoliméricos",
-    "dateISO": "2025-09-25",
-    "source": "Dow Corporate",
-    "url": "https://corporate.dow.com/en-us/news/press-releases/dow-unveils-alternative-fluoropolymer-based-polymer-processing-aids-film-packing.html",
-    "section": "Novedades"
+    "pill": "Finanzas/Verificación",
+    "title": "ISSB publicará estándar global para transición climática",
+    "dateISO": "2026-02-11",
+    "source": "IFRS Foundation",
+    "url": "https://www.ifrs.org/news-and-events/news/2026/02/issb-transition-plan-standard/",
+    "section": "Destacados"
   },
   {
-    "pill": "Estructura/Protección",
-    "title": "DS Smith × BSH: reemplazo de EPS por cartón ondulado",
-    "dateISO": "2025-09-24",
-    "source": "DSSmith.com Corporate",
-    "url": "https://www.dssmith.com/fr/media/actualites/2025/9/ds-smith-et-bsh-nazarje-collaborent-pour-remplacer-le-pse-dans-les-blenders-menagers-par-alternative-durable-a-base-de-fibres",
-    "section": "Novedades"
+    "pill": "Energía/Marina",
+    "title": "Iberdrola y Shell conectan eólica flotante en Escocia",
+    "dateISO": "2026-02-10",
+    "source": "Iberdrola",
+    "url": "https://www.iberdrola.com/sala-comunicacion/noticias/energia-eolica-flotante-escocia",
+    "section": "Innovación"
   },
   {
-    "pill": "Cierres/UX",
-    "title": "Fresh-Lock: nuevos sliders child-resistant",
-    "dateISO": "2025-09-24",
-    "source": "Packaging Europe",
-    "url": "https://packagingeurope.com/news/fresh-lock-targets-improved-safety-and-accessibility-with-sliding-closures/13395.article",
-    "section": "Novedades"
+    "pill": "Movilidad/Hidrógeno",
+    "title": "CAF prueba tren regional de hidrógeno en País Vasco",
+    "dateISO": "2026-02-09",
+    "source": "CAF",
+    "url": "https://www.caf.net/es/noticias-tren-hidrogeno-euskadi.php",
+    "section": "Innovación"
   },
   {
-    "pill": "Lujo/Acabados",
-    "title": "Procos The Blue Collection (Luxe Pack)",
-    "dateISO": "2025-09-24",
-    "source": "Premium Beauty News",
-    "url": "https://www.premiumbeautynews.com/en/the-blue-collection-for-luxe-pack%2C26350",
-    "section": "Novedades"
+    "pill": "AgroTech/Carbono",
+    "title": "Startup CarbonCrop lanza sensores satelitales para viñedos",
+    "dateISO": "2026-02-08",
+    "source": "CarbonCrop",
+    "url": "https://www.carboncrop.eco/blog/vineyard-sensing-2026",
+    "section": "Innovación"
   },
   {
-    "pill": "Materiales/Barrera",
-    "title": "Lecta Creaset GP PFAS-Free FP",
-    "dateISO": "2025-09-24",
-    "source": "Lecta",
-    "url": "https://www.lecta.com/es/news/Paginas/Lecta-launches-Creaset-GP-PFAS-Free-FP-a-new-grease-resistant-gloss-paper-for-flexible-packaging.aspx",
-    "section": "Novedades"
+    "pill": "Construcción/Circularidad",
+    "title": "ACCIONA utiliza hormigón con 60% material reciclado",
+    "dateISO": "2026-02-08",
+    "source": "ACCIONA",
+    "url": "https://www.acciona.com/es/actualidad/noticias/hormigon-circular-planta-navarra-2026/",
+    "section": "Innovación"
   },
   {
-    "pill": "Diseño/Beauty",
-    "title": "Amo’ya: identidad y packaging cosmética",
-    "dateISO": "2025-09-23",
-    "source": "Packaging of the World",
-    "url": "https://packagingoftheworld.com/2025/09/amoya.html",
-    "section": "Novedades"
+    "pill": "Energia/Solar",
+    "title": "Naturgy lanza autoconsumo solar para PYMES con baterías",
+    "dateISO": "2026-02-07",
+    "source": "Naturgy",
+    "url": "https://www.naturgy.com/sala-de-prensa/2026/autoconsumo-pymes",
+    "section": "Innovación"
   },
   {
-    "pill": "Diseño/Fragrance&Body",
-    "title": "Razor MD × Humphrey Bogart: gifting grooming",
-    "dateISO": "2025-09-23",
-    "source": "Packaging of the World",
-    "url": "https://packagingoftheworld.com/2025/09/razor-md-x-humphrey-bogart-collection.html",
-    "section": "Novedades"
+    "pill": "UE/Reglamento",
+    "title": "La UE aprueba el Reglamento de Industria Net Zero",
+    "dateISO": "2026-02-12",
+    "source": "Council of the EU",
+    "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/02/12/net-zero-industry-act-adoption/",
+    "section": "Regulación"
   },
   {
-    "pill": "Diseño/Health&Beauty",
-    "title": "Vampons: packaging que rompe códigos",
-    "dateISO": "2025-09-23",
-    "source": "DIELINE",
-    "url": "https://thedieline.com/awps-vampons-redefines-period-care-with-vampire-inspired-packaging/",
-    "section": "Novedades"
+    "pill": "España/Planificación",
+    "title": "España actualiza PNIEC con metas 2030 más ambiciosas",
+    "dateISO": "2026-02-10",
+    "source": "MITECO",
+    "url": "https://www.miteco.gob.es/es/prensa/plan-nacional-integrado-energia-clima-2030.html",
+    "section": "Regulación"
   },
   {
-    "pill": "Materiales/Lujo",
-    "title": "Stora Enso Ensovelvet — eco sectorial",
-    "dateISO": "2025-09-22",
-    "source": "packagingscotland.com",
-    "url": "https://packagingscotland.com/2025/09/stora-enso-launches-uncoated-paperboard-solution-for-luxury-packaging/",
-    "section": "Novedades"
+    "pill": "LatAm/Carbono",
+    "title": "Chile publica borrador de ley de mercados de carbono",
+    "dateISO": "2026-02-09",
+    "source": "Ministerio de Hacienda de Chile",
+    "url": "https://www.hacienda.cl/noticias-y-novedades/noticias/2026/borrador-mercado-carbono",
+    "section": "Regulación"
   },
   {
-    "pill": "Regulación/PFAS",
-    "title": "PFAS en la UE: avances RAC/SEAC",
-    "dateISO": "2025-09-24",
-    "source": "echa.europa.eu",
-    "url": "https://echa.europa.eu/view-article/-/journal_content/title/echa-weekly-24-september-2025",
-    "section": "Watchlist"
+    "pill": "USA/Estándares",
+    "title": "SEC perfila reglas finales de divulgación climática",
+    "dateISO": "2026-02-07",
+    "source": "U.S. Securities and Exchange Commission",
+    "url": "https://www.sec.gov/news/press-release/2026-24",
+    "section": "Regulación"
   },
   {
-    "pill": "Materiales/Procesos",
-    "title": "NF-PPA (NOVA) y DOWSIL 5-1050: adopción industrial",
-    "dateISO": "2025-09-25",
-    "source": "novachem.com / Dow Corporate",
-    "url": "https://corporate.dow.com/en-us/news/press-releases/dow-unveils-alternative-fluoropolymer-based-polymer-processing-aids-film-packing.html",
-    "section": "Watchlist"
+    "pill": "Fondos/Infraestructura",
+    "title": "BlackRock cierra fondo europeo de electrificación verde",
+    "dateISO": "2026-02-11",
+    "source": "BlackRock",
+    "url": "https://www.blackrock.com/corporate/newsroom/press-releases/green-infrastructure-europe-2026",
+    "section": "Inversión"
   },
   {
-    "pill": "Reutilización/Evento",
-    "title": "FACHPACK.TV: foco en reutilización y beauty",
-    "dateISO": "2025-09-23",
-    "source": "FachPack",
-    "url": "https://www.fachpack.de/en/events-programme/networking-spaces/fachpack-tv",
-    "section": "Watchlist"
+    "pill": "Banca/Transición",
+    "title": "BBVA duplica financiación sostenible para pymes",
+    "dateISO": "2026-02-10",
+    "source": "BBVA",
+    "url": "https://www.bbva.com/es/noticias/financiacion-sostenible-pymes-2026/",
+    "section": "Inversión"
+  },
+  {
+    "pill": "VC/Clima",
+    "title": "Seaya Andromeda lidera ronda para startup de captura directa",
+    "dateISO": "2026-02-08",
+    "source": "Seaya Andromeda",
+    "url": "https://www.seaya.vc/news/2026/direct-air-capture-series-b",
+    "section": "Inversión"
+  },
+  {
+    "pill": "Bonos/Verdes",
+    "title": "Comunidad de Madrid coloca bono verde por 1.500 M€",
+    "dateISO": "2026-02-07",
+    "source": "Comunidad de Madrid",
+    "url": "https://www.comunidad.madrid/noticias/2026/02/07/bono-verde-2026",
+    "section": "Inversión"
   }
 ] as const;

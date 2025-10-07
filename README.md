@@ -1,8 +1,9 @@
-# Minisite de Noticias — Vite + React + TS (Tailwind por CDN)
+# Global Trend Radar — Vite + React + TS (Tailwind por CDN)
 
-Proyecto generado automáticamente a partir de tus noticias. Estructura fija de 14 archivos.
+Minisite temático que recopila las principales señales sobre transición ecológica, regulación climática e inversión sostenible del 10 al 14 de febrero de 2026.
 
 ## Ejecutar localmente
 ```bash
 npm i
 npm run dev
+```

@@ -7,14 +7,26 @@ import { TrendCard } from "./components/TrendCard";
 import { formatDateEs } from "./utils";
 import { Toolbar } from "./components/Toolbar";
 
+const DOCUMENT_TITLE = `Global Trend Radar · ${metadata.period}`;
+
 export default function App() {
   useEffect(() => {
-    document.title = "Global Trend Radar · 29 sep – 3 oct 2025";
+    document.title = DOCUMENT_TITLE;
   }, []);
 
   const allSections = metadata.sections.map(s => s.title);
   const pills = useMemo(() => Array.from(new Set(NEWS.map(n => n.pill))).sort(), []);
   const { filtered, filters, setSearch, setPill, setSection } = useFilters(NEWS);
+
+  const stats = useMemo(() => {
+    const total = NEWS.length;
+    const sources = Array.from(new Set(NEWS.map(item => item.source))).length;
+    return {
+      total,
+      sources,
+      pills: pills.length,
+    };
+  }, [pills.length]);
 
   // Agrupar por sección
   const grouped = useMemo(() => {
@@ -33,76 +45,101 @@ export default function App() {
   const restDestacados = destacados.filter(i => i !== hero);
 
   return (
-    <section className="max-w-[980px] mx-auto p-5 text-slate-900">
-      <header className="mb-4 rounded-2xl px-4 py-3 bg-white/90 backdrop-blur border border-slate-200 shadow-sm">
-        <h1 className="text-[28px] font-bold leading-tight tracking-tight">Global Trend Radar · 29 sep – 3 oct 2025</h1>
-        <p className="m-0 text-slate-600">{metadata.subtitle}</p>
-      </header>
+    <div className="relative min-h-screen bg-slate-950 text-slate-100">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.18),_transparent_55%)]" />
 
-      <div className="sticky top-0 z-10 mb-4">
-        <div className="rounded-2xl border border-slate-200 bg-white/85 backdrop-blur px-3 py-3">
-          <Toolbar
-            pills={pills}
-            sections={allSections}
-            filters={filters}
-            setSearch={setSearch}
-            setPill={setPill}
-            setSection={setSection}
-            total={filtered.length}
-          />
-        </div>
-      </div>
+      <section className="mx-auto max-w-[1040px] px-5 pb-16 pt-10">
+        <header className="mb-8 rounded-3xl border border-white/10 bg-white/5 px-6 py-7 shadow-[0_25px_60px_-25px_rgba(15,23,42,0.6)] backdrop-blur">
+          <p className="mb-2 text-[13px] font-semibold uppercase tracking-[0.22em] text-lime-300/80">Global Trend Radar</p>
+          <h1 className="text-[32px] font-semibold leading-[1.1] text-white">{DOCUMENT_TITLE}</h1>
+          <p className="mt-3 max-w-2xl text-[15px] text-slate-200/85">{metadata.subtitle}</p>
 
-      {/* Destacados con HERO */}
-      {!!hero && (
-        <section className="mb-7">
-          {/* ⬇️ Cambio: títulos de sección en blanco */}
-          <h2 className="mt-2 mb-2 text-xl font-semibold text-white">Destacados</h2>
-          <div className="grid gap-4" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
-            {/* HERO ocupa 100% de ancho */}
-            <article className="col-span-full rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-              {hero.image ? (
-                <img
-                  src={hero.image}
-                  alt={hero.title}
-                  className="w-full h-64 md:h-80 object-cover"
-                  loading="eager"
-                />
-              ) : null}
-              <div className="p-4">
-                <span className="inline-block text-[11px] px-2.5 py-1 rounded-full bg-black text-white tracking-wide uppercase mb-2">{hero.pill}</span>
-                <h3 className="text-[18px] leading-snug font-semibold mb-2">{hero.title}</h3>
-                <div className="text-[12px] text-slate-600 mb-3">
-                  {formatDateEs(hero.dateISO)} · {hero.source}
-                </div>
-                <a href={hero.url} target="_blank" rel="noopener" className="text-[13px] text-black hover:underline">Leer más →</a>
-              </div>
-            </article>
+          <dl className="mt-6 grid gap-4 text-slate-200/85 sm:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3">
+              <dt className="text-[11px] uppercase tracking-[0.2em] text-slate-300/60">Noticias</dt>
+              <dd className="text-2xl font-semibold text-white">{stats.total}</dd>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3">
+              <dt className="text-[11px] uppercase tracking-[0.2em] text-slate-300/60">Pills temáticas</dt>
+              <dd className="text-2xl font-semibold text-white">{stats.pills}</dd>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3">
+              <dt className="text-[11px] uppercase tracking-[0.2em] text-slate-300/60">Fuentes</dt>
+              <dd className="text-2xl font-semibold text-white">{stats.sources}</dd>
+            </div>
+          </dl>
+        </header>
 
-            {/* Los otros tres titulares, sin imagen */}
-            {restDestacados.slice(0,3).map((item, i) => (
-              <TrendCard key={`${item.url}-${i}`} item={item} />
-            ))}
+        <div className="sticky top-4 z-10 mb-6">
+          <div className="rounded-3xl border border-white/10 bg-slate-900/80 px-4 py-4 backdrop-blur">
+            <Toolbar
+              pills={pills}
+              sections={allSections}
+              filters={filters}
+              setSearch={setSearch}
+              setPill={setPill}
+              setSection={setSection}
+              total={filtered.length}
+            />
           </div>
-        </section>
-      )}
+        </div>
 
-      {/* Resto de secciones, excepto Destacados ya renderizado arriba */}
-      {allSections.filter(s => s !== "Destacados").map((sectionTitle, idx) => {
-        const items = grouped.get(sectionTitle) || [];
-        if (!items.length) return null;
-        return (
-          <div key={sectionTitle} className="mt-7">
-            {/* ⬇️ Cambio: títulos de sección en blanco */}
-            <h2 className="mt-2 mb-2 text-xl font-semibold text-white">{sectionTitle}</h2>
-            <div className="grid gap-[14px]" style={{gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))"}}>
-              {items.map((item, i) => (
+        {/* Destacados con HERO */}
+        {!!hero && (
+          <section className="mb-10">
+            <h2 className="mt-2 mb-4 text-xl font-semibold text-white">Destacados</h2>
+            <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))" }}>
+              <article className="col-span-full overflow-hidden rounded-3xl border border-white/10 bg-white text-slate-900 shadow-xl">
+                {hero.image ? (
+                  <img
+                    src={hero.image}
+                    alt={hero.title}
+                    className="h-64 w-full object-cover md:h-80"
+                    loading="eager"
+                  />
+                ) : null}
+                <div className="p-5 md:p-6">
+                  <span className="mb-3 inline-block rounded-full bg-black px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
+                    {hero.pill}
+                  </span>
+                  <h3 className="mb-3 text-[21px] font-semibold leading-snug text-slate-900">{hero.title}</h3>
+                  <div className="mb-4 text-[12px] font-medium text-slate-600">
+                    {formatDateEs(hero.dateISO)} · {hero.source}
+                  </div>
+                  <a
+                    href={hero.url}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-[13px] font-semibold text-slate-900 underline-offset-4 transition hover:underline"
+                  >
+                    Leer más →
+                  </a>
+                </div>
+              </article>
+
+              {restDestacados.slice(0, 3).map((item, i) => (
                 <TrendCard key={`${item.url}-${i}`} item={item} />
               ))}
             </div>
-          </div>
-        );
-      })}
-    </section>
+          </section>
+        )}
+
+        {/* Resto de secciones, excepto Destacados ya renderizado arriba */}
+        {allSections.filter(s => s !== "Destacados").map(sectionTitle => {
+          const items = grouped.get(sectionTitle) || [];
+          if (!items.length) return null;
+          return (
+            <div key={sectionTitle} className="mt-10">
+              <h2 className="mb-4 text-xl font-semibold text-white">{sectionTitle}</h2>
+              <div className="grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))" }}>
+                {items.map((item, i) => (
+                  <TrendCard key={`${item.url}-${i}`} item={item} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+    </div>
   );
 }
